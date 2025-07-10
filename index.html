@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide Book Odoo SCM - 4 Modul Wajib</title>
+    <title>Guide Book Odoo SCM - Manajemen Rantai Pasok</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,6 @@
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
 
         .container {
@@ -26,1160 +25,1038 @@
         }
 
         .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 20px;
-            border-radius: 20px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .odoo-logo {
+            width: 150px;
+            height: 60px;
+            background: #714B67;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .header h1 {
+            color: #714B67;
             font-size: 2.5em;
-            color: #2c3e50;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .header .subtitle {
+        .header p {
+            color: #666;
             font-size: 1.2em;
-            color: #7f8c8d;
-            margin-bottom: 20px;
         }
 
-        .info-box {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            padding: 20px;
+        .nav-menu {
+            background: white;
             border-radius: 15px;
-            margin: 20px 0;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .module-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .module-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border-color: #3498db;
-        }
-
-        .module-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .module-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .module-description {
-            color: #7f8c8d;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .features-list {
+        .nav-menu ul {
             list-style: none;
-            padding: 0;
-        }
-
-        .features-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #ecf0f1;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            color: #27ae60;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .content-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: #2c3e50;
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: "";
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .flow-diagram {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
+            justify-content: space-around;
             flex-wrap: wrap;
         }
 
-        .flow-item {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
+        .nav-menu li {
             margin: 10px;
-            text-align: center;
-            min-width: 120px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
         }
 
-        .flow-item:hover {
-            transform: scale(1.05);
-        }
-
-        .flow-arrow {
-            font-size: 2em;
-            color: #3498db;
-            margin: 0 10px;
-        }
-
-        .step-by-step {
+        .nav-menu a {
+            text-decoration: none;
+            color: #714B67;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
             background: #f8f9fa;
-            border-left: 5px solid #3498db;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
         }
 
-        .step-number {
-            background: #3498db;
+        .nav-menu a:hover {
+            background: #714B67;
             color: white;
-            width: 30px;
-            height: 30px;
+            transform: translateY(-2px);
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-
-        .code-block {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-
-        .highlight {
-            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            font-size: 24px;
             color: white;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-weight: bold;
+            margin-right: 20px;
         }
 
-        .warning-box {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 10px;
+        .sales-icon { background: #28a745; }
+        .purchase-icon { background: #007bff; }
+        .manufacture-icon { background: #ffc107; color: #333; }
+        .inventory-icon { background: #dc3545; }
+
+        .module-title {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
             padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #714B67;
+        }
+
+        .feature-card h4 {
+            color: #714B67;
+            margin-bottom: 10px;
+        }
+
+        .step-list {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
             margin: 20px 0;
         }
 
-        .success-box {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
+        .step-list ol {
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+
+        .screenshot-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
             border-radius: 10px;
-            padding: 20px;
+            padding: 40px;
+            text-align: center;
+            color: #6c757d;
             margin: 20px 0;
         }
 
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
+        .benefits-section {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
             margin: 30px 0;
         }
 
-        .nav-button {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .nav-button:hover {
-            background: linear-gradient(45deg, #2980b9, #3498db);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .benefit-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
         }
 
         .footer {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
+            border-radius: 15px;
             padding: 30px;
-            border-radius: 20px;
-            margin-top: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .team-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .modules-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .flow-diagram {
+            .nav-menu ul {
                 flex-direction: column;
+                align-items: center;
             }
             
-            .flow-arrow {
-                transform: rotate(90deg);
+            .module-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .module-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
             }
         }
-
-        .toc {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .toc ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .toc li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ecf0f1;
-        }
-
-        .toc a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .toc a:hover {
-            color: #2980b9;
-        }
-
-        .integration-diagram {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .integration-circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9em;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .sales-color { background: linear-gradient(45deg, #e74c3c, #c0392b); }
-        .purchase-color { background: linear-gradient(45deg, #3498db, #2980b9); }
-        .manufacture-color { background: linear-gradient(45deg, #f39c12, #e67e22); }
-        .inventory-color { background: linear-gradient(45deg, #27ae60, #229954); }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🏭 Guide Book Odoo SCM</h1>
-            <div class="subtitle">Supply Chain Management - 4 Modul Wajib</div>
-            <div class="info-box">
-                <strong>📚 Mata Kuliah:</strong> Manajemen Rantai Pasok<br>
-                <strong>🎓 Program Studi:</strong> Sistem Informasi - Semester 4<br>
-                <strong>👥 Tugas Kelompok:</strong> 2 Orang per Kelompok
+            <div class="odoo-logo">ODOO</div>
+            <h1>Guide Book Odoo SCM</h1>
+            <p>Panduan Lengkap Supply Chain Management dengan Odoo</p>
+            <div class="team-info">
+                <strong>Mata Kuliah:</strong> Manajemen Rantai Pasok<br>
+                <strong>Program Studi:</strong> Sistem Informasi - Semester 4<br>
+                <strong>Dosen:</strong> Bu Erba
+                <div class="team-info" style="margin-top: 20px;">
+                <h4>👥 Tim Penyusun</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="width: 60px; height: 60px; background: #714B67; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">👨‍🎓</div>
+                        <strong>Mochammad Rizky Juliansyah</strong><br>
+                        <small>NIM: F12.2023.00099</small>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="width: 60px; height: 60px; background: #714B67; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">👩‍🎓</div>
+                        <strong>Christiawan Yosua Hertinando</strong><br>
+                        <small>NIM: F12.2023.00103</small>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
 
-        <!-- Table of Contents -->
-        <div class="toc">
-            <h2 class="section-title">📋 Daftar Isi</h2>
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
             <ul>
-                <li><a href="#pengenalan">1. Pengenalan Odoo SCM</a></li>
-                <li><a href="#modul-overview">2. Overview 4 Modul Wajib</a></li>
-                <li><a href="#sales">3. Sales Management</a></li>
-                <li><a href="#purchase">4. Purchase Management</a></li>
-                <li><a href="#manufacture">5. Manufacturing</a></li>
-                <li><a href="#inventory">6. Inventory Management</a></li>
-                <li><a href="#integrasi">7. Integrasi Antar Modul</a></li>
-                <li><a href="#implementasi">8. Implementasi & Best Practices</a></li>
-                <li><a href="#troubleshooting">9. Troubleshooting</a></li>
-                <li><a href="#kesimpulan">10. Kesimpulan</a></li>
+                <li><a href="#introduction">Pengenalan</a></li>
+                <li><a href="#sales">Sales</a></li>
+                <li><a href="#purchase">Purchase</a></li>
+                <li><a href="#manufacture">Manufacture</a></li>
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#integration">Integrasi</a></li>
             </ul>
         </div>
 
-        <!-- Pengenalan -->
-        <div class="content-section" id="pengenalan">
-            <h2 class="section-title">🚀 Pengenalan Odoo SCM</h2>
+        <!-- Introduction Section -->
+        <div id="introduction" class="module-section">
+            <h2>🚀 Pengenalan Odoo SCM</h2>
+            <p>Odoo adalah platform ERP (Enterprise Resource Planning) open-source yang menyediakan solusi terintegrasi untuk manajemen rantai pasok. Sistem ini memungkinkan perusahaan untuk mengelola seluruh proses bisnis dari penjualan hingga pengiriman produk.</p>
             
-            <div class="warning-box">
-                <strong>⚡ Definisi SCM:</strong> Supply Chain Management adalah koordinasi strategis dari fungsi-fungsi bisnis dan taktik bisnis di dalam perusahaan dan di seluruh bisnis di dalam rantai pasokan untuk tujuan meningkatkan kinerja jangka panjang dari perusahaan individu dan rantai pasokan secara keseluruhan.
-            </div>
-
-            <h3>🎯 Mengapa Odoo untuk SCM?</h3>
-            <ul class="features-list">
-                <li><strong>Integrasi Seamless:</strong> Semua modul terhubung real-time</li>
-                <li><strong>Visibilitas End-to-End:</strong> Tracking dari supplier hingga customer</li>
-                <li><strong>Automation:</strong> Otomasi proses bisnis dan workflow</li>
-                <li><strong>Scalability:</strong> Dapat berkembang sesuai kebutuhan bisnis</li>
-                <li><strong>Cost-Effective:</strong> ROI yang tinggi dengan biaya implementasi rendah</li>
-            </ul>
-
-            <div class="flow-diagram">
-                <div class="flow-item">🛒 PURCHASE</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">📦 INVENTORY</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">🏭 MANUFACTURE</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">💰 SALES</div>
+            <div class="benefits-section">
+                <h3>Mengapa Memilih Odoo untuk SCM?</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <h4>🔄 Terintegrasi</h4>
+                        <p>Semua modul terhubung dalam satu sistem</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>💰 Cost-Effective</h4>
+                        <p>Solusi open-source dengan biaya rendah</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>📊 Real-time Data</h4>
+                        <p>Informasi terkini untuk pengambilan keputusan</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🎯 User-Friendly</h4>
+                        <p>Interface yang mudah digunakan</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Module Overview -->
-        <div class="content-section" id="modul-overview">
-            <h2 class="section-title">⚙️ Overview 4 Modul Wajib SCM</h2>
+        <!-- Sales Module -->
+        <div id="sales" class="module-section">
+            <div class="module-header">
+                <div class="module-icon sales-icon">💼</div>
+                <h2 class="module-title">Sales Module</h2>
+            </div>
             
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="module-icon">💰</div>
-                    <div class="module-title">SALES</div>
-                    <div class="module-description">Manajemen penjualan, customer, dan revenue</div>
-                    <ul class="features-list">
-                        <li>Customer Management</li>
-                        <li>Quotation & Sales Orders</li>
-                        <li>Invoicing & Payment</li>
-                        <li>Sales Analytics</li>
+            <p>Modul Sales mengelola seluruh proses penjualan dari quotation hingga invoice, memungkinkan tracking customer dan analisis performa penjualan.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🎯 Lead Management</h4>
+                    <p>Mengelola prospek dan mengkonversi menjadi customer</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Quotation & Orders</h4>
+                    <p>Membuat penawaran dan mengkonversi menjadi sales order</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Sales Analytics</h4>
+                    <p>Analisis performa penjualan dan forecasting</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👥 Customer Portal</h4>
+                    <p>Portal khusus untuk customer mengakses informasi</p>
+                </div>
+            </div>
+
+            <div class="step-list">
+                <h3>Langkah-langkah Menggunakan Sales Module:</h3>
+                <ol>
+                    <li><strong>Setup Customer:</strong> Buat database customer dengan informasi lengkap</li>
+                    <li><strong>Create Quotation:</strong> Buat penawaran harga untuk customer</li>
+                    <li><strong>Confirm Sales Order:</strong> Konfirmasi pesanan setelah customer setuju</li>
+                    <li><strong>Delivery Process:</strong> Koordinasi dengan inventory untuk pengiriman</li>
+                    <li><strong>Invoice Generation:</strong> Generate invoice otomatis</li>
+                    <li><strong>Payment Tracking:</strong> Monitor status pembayaran</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <img src="/screenshoot/sales.png" alt="" style="width: 100%;">
+            </div>
+        </div>
+
+        <!-- Purchase Module -->
+        <div id="purchase" class="module-section">
+            <div class="module-header">
+                <div class="module-icon purchase-icon">🛒</div>
+                <h2 class="module-title">Purchase Module</h2>
+            </div>
+            
+            <p>Modul Purchase mengoptimalkan proses pengadaan barang, dari request for quotation hingga penerimaan barang dan pembayaran supplier.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📝 Purchase Requests</h4>
+                    <p>Sistem permintaan pembelian dari departemen</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏪 Vendor Management</h4>
+                    <p>Database supplier dengan rating dan evaluasi</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💰 Price Comparison</h4>
+                    <p>Perbandingan harga dari multiple supplier</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📦 Goods Receipt</h4>
+                    <p>Proses penerimaan dan quality control</p>
+                </div>
+            </div>
+
+            <div class="step-list">
+                <h3>Workflow Purchase Process:</h3>
+                <ol>
+                    <li><strong>Purchase Request:</strong> Departemen membuat permintaan pembelian</li>
+                    <li><strong>RFQ Creation:</strong> Buat Request for Quotation ke supplier</li>
+                    <li><strong>Vendor Selection:</strong> Pilih supplier terbaik berdasarkan kriteria</li>
+                    <li><strong>Purchase Order:</strong> Generate PO setelah approval</li>
+                    <li><strong>Goods Receipt:</strong> Terima barang dan lakukan quality check</li>
+                    <li><strong>Invoice Matching:</strong> Cocokkan invoice dengan PO dan receipt</li>
+                    <li><strong>Payment Processing:</strong> Proses pembayaran ke supplier</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <img src="/screenshoot/purchase.png" alt="" style="width: 100%;">
+            </div>
+        </div>
+
+        <!-- Manufacturing Module -->
+        <div id="manufacture" class="module-section">
+            <div class="module-header">
+                <div class="module-icon manufacture-icon">🏭</div>
+                <h2 class="module-title">Manufacturing Module</h2>
+            </div>
+            
+            <p>Modul Manufacturing mengelola proses produksi dari perencanaan hingga finished goods, termasuk Bill of Materials dan work orders.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📋 Bill of Materials</h4>
+                    <p>Daftar komponen dan instruksi produksi</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚙️ Work Orders</h4>
+                    <p>Instruksi kerja untuk setiap tahap produksi</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📅 Production Planning</h4>
+                                        <p>Perencanaan produksi berdasarkan demand dan capacity</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Quality Control</h4>
+                    <p>Kontrol kualitas di setiap tahap produksi</p>
+                </div>
+            </div>
+
+            <div class="step-list">
+                <h3>Manufacturing Process Flow:</h3>
+                <ol>
+                    <li><strong>Create BOM:</strong> Buat Bill of Materials untuk setiap produk</li>
+                    <li><strong>Production Planning:</strong> Rencanakan jadwal produksi berdasarkan sales forecast</li>
+                    <li><strong>Material Requirement:</strong> Hitung kebutuhan raw material</li>
+                    <li><strong>Work Order Creation:</strong> Generate work order untuk production</li>
+                    <li><strong>Production Execution:</strong> Jalankan proses produksi sesuai work order</li>
+                    <li><strong>Quality Inspection:</strong> Lakukan quality control pada finished goods</li>
+                    <li><strong>Stock Movement:</strong> Transfer finished goods ke inventory</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <img src="/screenshoot/manufacture.png" alt="" style="width: 100%;">
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔄 MRP (Material Requirement Planning)</h4>
+                    <p>Sistem otomatis menghitung kebutuhan material berdasarkan production schedule dan current stock level</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⏱️ Production Scheduling</h4>
+                    <p>Penjadwalan produksi yang optimal dengan mempertimbangkan capacity dan deadline</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Module -->
+        <div id="inventory" class="module-section">
+            <div class="module-header">
+                <div class="module-icon inventory-icon">📦</div>
+                <h2 class="module-title">Inventory Module</h2>
+            </div>
+            
+            <p>Modul Inventory adalah jantung dari supply chain management, mengelola stock level, warehouse operations, dan stock movements secara real-time.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📊 Stock Management</h4>
+                    <p>Tracking real-time stock level dan stock movements</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏪 Multi-Warehouse</h4>
+                    <p>Mengelola multiple warehouse dan locations</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Stock Valuation</h4>
+                    <p>Penilaian inventory dengan berbagai metode (FIFO, LIFO, Average)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🚚 Delivery Management</h4>
+                    <p>Mengelola pengiriman dan tracking delivery</p>
+                </div>
+            </div>
+
+            <div class="step-list">
+                <h3>Inventory Management Workflow:</h3>
+                <ol>
+                    <li><strong>Product Setup:</strong> Konfigurasi master data produk dengan kategori dan unit</li>
+                    <li><strong>Warehouse Configuration:</strong> Setup warehouse, locations, dan routes</li>
+                    <li><strong>Stock Receipt:</strong> Terima barang dari supplier atau production</li>
+                    <li><strong>Stock Allocation:</strong> Alokasi stock untuk sales order</li>
+                    <li><strong>Picking & Packing:</strong> Proses picking dan packing untuk delivery</li>
+                    <li><strong>Stock Transfer:</strong> Transfer antar warehouse atau location</li>
+                    <li><strong>Inventory Adjustment:</strong> Penyesuaian stock berdasarkan physical count</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+               <img src="/screenshoot/inven2.png" alt="" style="width: 100%;">
+               <img src="/screenshoot/inven1.png" alt="" style="width: 100%; margin-top: 20px;" >
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>⚠️ Reorder Rules</h4>
+                    <p>Automatic reorder point untuk mencegah stockout dan mengoptimalkan inventory level</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📈 ABC Analysis</h4>
+                    <p>Klasifikasi produk berdasarkan value dan movement untuk inventory optimization</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔍 Lot & Serial Tracking</h4>
+                    <p>Traceability produk dengan lot number dan serial number untuk quality control</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Section -->
+        <div id="integration" class="module-section">
+            <h2>🔗 Integrasi Antar Modul SCM</h2>
+            <p>Kekuatan utama Odoo terletak pada integrasi seamless antar modul yang menciptakan end-to-end supply chain visibility.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔄 Sales → Inventory</h4>
+                    <p>Sales order otomatis trigger stock reservation dan delivery order</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏭 Manufacturing → Purchase</h4>
+                    <p>MRP otomatis generate purchase request untuk raw materials</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📦 Inventory → Accounting</h4>
+                    <p>Stock movements otomatis update inventory valuation di accounting</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💰 Purchase → Finance</h4>
+                    <p>Purchase order terintegrasi dengan accounts payable</p>
+                </div>
+            </div>
+
+            <div class="step-list">
+                <h3>End-to-End SCM Process Flow:</h3>
+                <ol>
+                    <li><strong>Customer Order:</strong> Sales team input customer order di Sales module</li>
+                    <li><strong>Stock Check:</strong> System check availability di Inventory module</li>
+                    <li><strong>Production Planning:</strong> Jika stock tidak cukup, trigger Manufacturing module</li>
+                    <li><strong>Material Procurement:</strong> MRP generate purchase request di Purchase module</li>
+                    <li><strong>Goods Receipt:</strong> Raw materials diterima dan masuk ke Inventory</li>
+                    <li><strong>Production Execution:</strong> Manufacturing process menggunakan raw materials</li>
+                    <li><strong>Finished Goods:</strong> Hasil produksi masuk ke finished goods inventory</li>
+                    <li><strong>Delivery Process:</strong> Goods dikirim ke customer melalui delivery order</li>
+                    <li><strong>Invoice & Payment:</strong> Generate invoice dan track payment</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+               <img src="/screenshoot/supply chain.jpg" alt="" style="width: 100%;">
+            </div>
+        </div>
+
+        <!-- Best Practices Section -->
+        <div class="module-section">
+            <h2>💡 Best Practices Implementation</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📋 Master Data Management</h4>
+                    <ul>
+                        <li>Standardisasi product coding</li>
+                        <li>Consistent vendor information</li>
+                        <li>Proper category classification</li>
+                        <li>Regular data cleansing</li>
                     </ul>
                 </div>
-
-                <div class="module-card">
-                    <div class="module-icon">🛒</div>
-                    <div class="module-title">PURCHASE</div>
-                    <div class="module-description">Manajemen pembelian dan supplier</div>
-                    <ul class="features-list">
-                        <li>Vendor Management</li>
-                        <li>RFQ & Purchase Orders</li>
-                        <li>Receipts & Vendor Bills</li>
-                        <li>Purchase Analytics</li>
+                <div class="feature-card">
+                    <h4>🔐 User Access Control</h4>
+                    <ul>
+                        <li>Role-based access control</li>
+                        <li>Approval workflow setup</li>
+                        <li>Audit trail maintenance</li>
+                        <li>Regular access review</li>
                     </ul>
                 </div>
-
-                <div class="module-card">
-                    <div class="module-icon">🏭</div>
-                    <div class="module-title">MANUFACTURE</div>
-                    <div class="module-description">Proses produksi dan manufacturing</div>
-                    <ul class="features-list">
-                        <li>Bill of Materials (BOM)</li>
-                        <li>Manufacturing Orders</li>
-                        <li>Work Centers</li>
-                        <li>Production Planning</li>
+                <div class="feature-card">
+                    <h4>📊 Performance Monitoring</h4>
+                    <ul>
+                        <li>KPI dashboard setup</li>
+                        <li>Regular performance review</li>
+                        <li>Exception reporting</li>
+                        <li>Continuous improvement</li>
                     </ul>
                 </div>
-
-                <div class="module-card">
-                    <div class="module-icon">📦</div>
-                    <div class="module-title">INVENTORY</div>
-                    <div class="module-description">Manajemen stok dan warehouse</div>
-                    <ul class="features-list">
-                        <li>Stock Management</li>
-                        <li>Warehouse Operations</li>
-                        <li>Traceability</li>
-                        <li>Inventory Valuation</li>
+                <div class="feature-card">
+                    <h4>🔄 Process Optimization</h4>
+                    <ul>
+                        <li>Workflow standardization</li>
+                        <li>Automation implementation</li>
+                        <li>Regular process review</li>
+                        <li>User training program</li>
                     </ul>
                 </div>
             </div>
+        </div>
 
-            <div class="integration-diagram">
-                <h3>🔗 Integrasi Modul SCM</h3>
-                <div class="integration-circle sales-color">SALES</div>
-                <div class="integration-circle purchase-color">PURCHASE</div>
-                <div class="integration-circle manufacture-color">MANUFACTURE</div>
-                <div class="integration-circle inventory-color">INVENTORY</div>
-                <p style="margin-top: 20px; font-style: italic;">Semua modul terintegrasi untuk menciptakan alur SCM yang seamless</p>
+        <!-- KPI & Metrics Section -->
+        <div class="benefits-section">
+            <h2>📈 Key Performance Indicators (KPI)</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>📊 Sales KPIs</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Sales Growth Rate</li>
+                        <li>Customer Acquisition Cost</li>
+                        <li>Average Order Value</li>
+                        <li>Sales Conversion Rate</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>🛒 Purchase KPIs</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Purchase Order Cycle Time</li>
+                        <li>Supplier Performance</li>
+                        <li>Cost Savings</li>
+                        <li>Purchase Order Accuracy</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>🏭 Manufacturing KPIs</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Production Efficiency</li>
+                        <li>Quality Rate</li>
+                        <li>Equipment Utilization</li>
+                        <li>On-time Delivery</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>📦 Inventory KPIs</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Inventory Turnover</li>
+                        <li>Stock Accuracy</li>
+                        <li>Carrying Cost</li>
+                        <li>Stockout Frequency</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- Sales Management -->
-        <div class="content-section" id="sales">
-            <h2 class="section-title">💰 Sales Management</h2>
+        <!-- Implementation Guide -->
+        <div class="module-section">
+            <h2>🚀 Implementation Roadmap</h2>
             
-            <div class="success-box">
-                <strong>🎯 Tujuan:</strong> Mengelola seluruh proses penjualan dari lead hingga pembayaran, memastikan kepuasan customer dan pertumbuhan revenue.
+            <div class="step-list">
+                <h3>Phase 1: Foundation</h3>
+                <ol>
+                    <li>Install dan setup Odoo environment</li>
+                    <li>Configure company information dan basic settings</li>
+                    <li>Setup user accounts dan access rights</li>
+                    <li>Import master data (products, customers, suppliers)</li>
+                </ol>
             </div>
 
-            <h3>📋 Langkah-langkah Implementasi Sales</h3>
-            
-            <div class="step-by-step">
-                <span class="step-number">1</span>
-                <strong>Setup Customer Data</strong>
-                <div class="code-block">
-Menu: Sales → Orders → Customers
-- Nama customer
-- Contact information
-- Payment terms
-- Credit limit
-- Delivery address
-                </div>
+            <div class="step-list">
+                <h3>Phase 2: Core Modules</h3>
+                <ol>
+                    <li>Configure Inventory module dengan warehouse setup</li>
+                    <li>Setup Sales module dengan price lists dan terms</li>
+                    <li>Configure Purchase module dengan vendor management</li>
+                    <li>Basic workflow testing dan user training</li>
+                </ol>
             </div>
 
-            <div class="step-by-step">
-                <span class="step-number">2</span>
-                <strong>Product Configuration</strong>
-                <div class="code-block">
-Menu: Sales → Products → Products
-- Product name & description
-- Sales price
-- Unit of measure
-- Product category
-- Taxes
-                </div>
+            <div class="step-list">
+                <h3>Phase 3: Advanced Features</h3>
+                <ol>
+                    <li>Setup Manufacturing module dengan BOM</li>
+                    <li>Configure advanced inventory features (lots, serials)</li>
+                    <li>Implement approval workflows</li>
+                    <li>Setup reporting dan dashboards</li>
+                </ol>
             </div>
 
-            <div class="step-by-step">
-                <span class="step-number">3</span>
-                <strong>Create Quotation</strong>
-                <div class="code-block">
-Menu: Sales → Orders → Quotations
-- Select customer
-- Add products
-- Set quantities
-- Apply discounts
-- Send quotation
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">4</span>
-                <strong>Confirm Sales Order</strong>
-                <div class="code-block">
-Process: Quotation → Sales Order
-- Customer approval
-- Confirm order
-- Generate delivery order
-- Create invoice
-                </div>
-            </div>
-
-            <h3>📊 Sales Analytics & Reporting</h3>
-            <ul class="features-list">
-                <li><strong>Sales Dashboard:</strong> Real-time sales metrics dan KPI</li>
-                <li><strong>Customer Analysis:</strong> Profitabilitas per customer</li>
-                <li><strong>Product Performance:</strong> Best selling products</li>
-                <li><strong>Sales Forecast:</strong> Prediksi penjualan masa depan</li>
-                <li><strong>Commission Tracking:</strong> Perhitungan komisi sales team</li>
-            </ul>
-        </div>
-
-        <!-- Purchase Management -->
-        <div class="content-section" id="purchase">
-            <h2 class="section-title">🛒 Purchase Management</h2>
-            
-            <div class="success-box">
-                <strong>🎯 Tujuan:</strong> Mengoptimalkan proses procurement, mengelola supplier relationship, dan memastikan supply continuity dengan cost yang efisien.
-            </div>
-
-            <h3>📋 Langkah-langkah Implementasi Purchase</h3>
-            
-            <div class="step-by-step">
-                <span class="step-number">1</span>
-                <strong>Vendor Management</strong>
-                <div class="code-block">
-Menu: Purchase → Vendors → Vendors
-- Vendor information
-- Contact details
-- Payment terms
-- Vendor pricelist
-- Performance metrics
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">2</span>
-                <strong>Purchase Product Setup</strong>
-                <div class="code-block">
-Menu: Purchase → Products → Products
-- Product purchase info
-- Vendor assignment
-- Purchase unit of measure
-- Lead time
-- Minimum order quantity
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">3</span>
-                <strong>Request for Quotation (RFQ)</strong>
-                <div class="code-block">
-Menu: Purchase → Orders → Requests for Quotation
-- Create RFQ
-- Add products
-- Send to vendors
-- Compare quotes
-- Select best offer
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">4</span>
-                <strong>Purchase Order Process</strong>
-                <div class="code-block">
-Process: RFQ → Purchase Order → Receipt → Vendor Bill
-- Confirm purchase order
-- Track delivery
-- Receive products
-- Process vendor invoice
-                </div>
-            </div>
-
-            <h3>📊 Purchase Analytics</h3>
-            <ul class="features-list">
-                <li><strong>Vendor Performance:</strong> On-time delivery, quality metrics</li>
-                <li><strong>Cost Analysis:</strong> Price trends dan cost optimization</li>
-                <li><strong>Purchase Volume:</strong> Analisis volume pembelian</li>
-                <li><strong>Lead Time Analysis:</strong> Monitoring delivery performance</li>
-                <li><strong>Budget Control:</strong> Tracking purchase budget</li>
-            </ul>
-        </div>
-
-        <!-- Manufacturing -->
-        <div class="content-section" id="manufacture">
-            <h2 class="section-title">🏭 Manufacturing</h2>
-            
-            <div class="success-box">
-                <strong>🎯 Tujuan:</strong> Mengoptimalkan proses produksi, mengelola Bill of Materials (BOM), dan memastikan quality control dalam manufacturing operations.
-            </div>
-
-            <h3>📋 Langkah-langkah Implementasi Manufacturing</h3>
-            
-            <div class="step-by-step">
-                <span class="step-number">1</span>
-                <strong>Bill of Materials (BOM) Setup</strong>
-                <div class="code-block">
-Menu: Manufacturing → Master Data → Bills of Materials
-- Product to manufacture
-- Raw materials/components
-- Quantities required
-- Operations sequence
-- Work centers
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">2</span>
-                <strong>Work Centers Configuration</strong>
-                <div class="code-block">
-Menu: Manufacturing → Configuration → Work Centers
-- Work center name
-- Capacity & availability
-- Operating costs
-- Time efficiency
-- Resource allocation
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">3</span>
-                <strong>Manufacturing Orders</strong>
-                <div class="code-block">
-Menu: Manufacturing → Operations → Manufacturing Orders
-- Select product to manufacture
-- Set quantity
-- Schedule production
-- Assign work centers
-- Start production
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">4</span>
-                <strong>Production Planning</strong>
-                <div class="code-block">
-Menu: Manufacturing → Planning → Master Production Schedule
-- Demand forecasting
-- Capacity planning
-- Material requirements
-- Production scheduling
-- Resource optimization
-                </div>
-            </div>
-
-            <h3>🔧 Manufacturing Features</h3>
-            <ul class="features-list">
-                <li><strong>Multi-level BOM:</strong> Komponen bertingkat untuk produk kompleks</li>
-                <li><strong>Routing Operations:</strong> Sequence operasi produksi</li>
-                <li><strong>Quality Control:</strong> Quality checks di setiap stage</li>
-                <li><strong>Scrap Management:</strong> Pengelolaan material scrap</li>
-                <li><strong>Subcontracting:</strong> Manajemen produksi subkontraktor</li>
-            </ul>
-        </div>
-
-        <!-- Inventory Management -->
-        <div class="content-section" id="inventory">
-            <h2 class="section-title">📦 Inventory Management</h2>
-            
-            <div class="success-box">
-                <strong>🎯 Tujuan:</strong> Mengoptimalkan inventory levels, mengelola warehouse operations, dan memastikan accuracy dalam stock management.
-            </div>
-
-            <h3>📋 Langkah-langkah Implementasi Inventory</h3>
-            
-            <div class="step-by-step">
-                <span class="step-number">1</span>
-                <strong>Warehouse Setup</strong>
-                <div class="code-block">
-Menu: Inventory → Configuration → Warehouses
-- Warehouse locations
-- Stock locations
-- Input/Output locations
-- Routes configuration
-- Operation types
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">2</span>
-                <strong>Product Tracking</strong>
-                <div class="code-block">
-Menu: Inventory → Products → Products
-- Tracking type (lots/serial)
-- Inventory routes
-- Reordering rules
-- Valuation method
-- Storage categories
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">3</span>
-                <strong>Stock Operations</strong>
-                <div class="code-block">
-Menu: Inventory → Operations
-- Receipts (from purchases)
-- Delivery orders (to customers)
-- Internal transfers
-- Inventory adjustments
-- Manufacturing consumption
-                </div>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">4</span>
-                <strong>Inventory Valuation</strong>
-                <div class="code-block">
-Menu: Inventory → Reporting → Inventory Valuation
-- FIFO method
-- Average cost
-- Standard price
-- Real-time valuation
-- Periodic inventory
-                </div>
-            </div>
-
-            <h3>📊 Inventory Analytics</h3>
-            <ul class="features-list">
-                <li><strong>Stock Levels:</strong> Real-time monitoring inventory levels</li>
-                <li><strong>ABC Analysis:</strong> Klasifikasi produk berdasarkan value</li>
-                <li><strong>Aging Analysis:</strong> Identifikasi slow-moving stock</li>
-                <li><strong>Turnover Ratio:</strong> Efisiensi inventory management</li>
-                <li><strong>Forecasting:</strong> Prediksi kebutuhan inventory</li>
-            </ul>
-        </div>
-
-        <!-- Integrasi -->
-        <div class="content-section" id="integrasi">
-            <h2 class="section-title">🔗 Integrasi Antar Modul</h2>
-            
-            <div class="warning-box">
-                <strong>⚡ Kunci Sukses SCM:</strong> Integrasi yang seamless antar semua modul untuk menciptakan alur informasi yang real-time dan akurat.
-            </div>
-
-            <h3>🔄 Alur Integrasi SCM</h3>
-            
-            <div class="integration-diagram">
-                <div style="margin: 20px 0;">
-                    <div class="flow-item">📞 SALES ORDER</div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-item">🏭 MANUFACTURING ORDER</div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-item">🛒 PURCHASE ORDER</div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-item">📦 INVENTORY RECEIPT</div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-item">🚚 DELIVERY ORDER</div>
-                </div>
-            </div>
-
-            <h3>🎯 Skenario Integrasi</h3>
-            
-            <div class="step-by-step">
-                <span class="step-number">1</span>
-                <strong>Sales → Manufacturing</strong>
-                <p>Sales order otomatis trigger manufacturing order berdasarkan BOM dan availability</p>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">2</span>
-                <strong>Manufacturing → Purchase</strong>
-                <p>Manufacturing order generate purchase order untuk raw materials yang kurang</p>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">3</span>
-                <strong>Purchase → Inventory</strong>
-                <p>Purchase receipt otomatis update inventory levels di warehouse</p>
-            </div>
-
-            <div class="step-by-step">
-                <span class="step-number">4</span>
-                <strong>Inventory → Sales</strong>
-                <p>Stock availability real-time update ke sales untuk customer delivery</p>
-            </div>
-
-            <div class="success-box">
-                <strong>✅ Benefits Integrasi:</strong>
-                <ul style="margin-top: 10px; padding-left: 20px;">
-                    <li>Eliminasi manual data entry</li>
-                    <li>Real-time visibility across supply chain</li>
-                    <li>Automatic workflow triggers</li>
-                    <li>Consistent data across modules</li>
-                    <li>Faster decision making</li>
-                </ul>
+            <div class="step-list">
+                <h3>Phase 4: Go-Live & Optimization</h3>
+                <ol>
+                    <li>Data migration dari sistem lama</li>
+                    <li>User acceptance testing</li>
+                    <li>Go-live support</li>
+                    <li>Performance monitoring dan optimization</li>
+                </ol>
             </div>
         </div>
 
-        <!-- Implementasi -->
-        <div class="content-section" id="implementasi">
-            <h2 class="section-title">⚙️ Implementasi & Best Practices<div class="warning-box">
-          <strong>🚨 Perhatian:</strong> Implementasi SCM harus dilakukan secara bertahap dengan planning yang matang untuk menghindari business disruption.
-      </div>
+        <!-- Troubleshooting Section -->
+        <div class="module-section">
+            <h2>🔧 Troubleshooting Common Issues</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>❌ Stock Discrepancy</h4>
+                    <p><strong>Problem:</strong> Physical stock tidak match dengan system</p>
+                    <p><strong>Solution:</strong> Lakukan inventory adjustment dan review stock movement history</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚠️ Delivery Delays</h4>
+                    <p><strong>Problem:</strong> Keterlambatan pengiriman ke customer</p>
+                    <p><strong>Solution:</strong> Review procurement lead time dan setup safety stock</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💰 Cost Variance</h4>
+                    <p><strong>Problem:</strong> Actual cost berbeda dengan standard cost</p>
+                    <p><strong>Solution:</strong> Review BOM accuracy dan update standard costs</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔄 Workflow Bottleneck</h4>
+                    <p><strong>Problem:</strong> Proses approval terlalu lama</p>
+                    <p><strong>Solution:</strong> Optimize approval workflow dan delegation setup</p>
+                </div>
+            </div>
+        </div>
 
-      <h3>📋 Roadmap Implementasi</h3>
-      
-      <div class="step-by-step">
-          <span class="step-number">1</span>
-          <strong>Phase 1: Foundation Setup (Minggu 1-2)</strong>
-          <ul class="features-list">
-              <li>Install dan configure 4 modul wajib</li>
-              <li>Setup company information dan basic settings</li>
-              <li>Create master data (products, customers, vendors)</li>
-              <li>Configure warehouse locations</li>
-          </ul>
-      </div>
+        <!-- Advanced Features Section -->
+        <div class="module-section">
+            <h2>🔬 Advanced SCM Features</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🤖 AI-Powered Forecasting</h4>
+                    <p>Machine learning algorithms untuk demand forecasting yang lebih akurat berdasarkan historical data dan market trends.</p>
+                    <ul>
+                        <li>Seasonal demand patterns</li>
+                        <li>Market trend analysis</li>
+                        <li>Automatic forecast adjustment</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📱 Mobile SCM</h4>
+                    <p>Mobile application untuk warehouse operations dan field sales yang memungkinkan real-time updates.</p>
+                    <ul>
+                        <li>Barcode scanning</li>
+                        <li>Mobile inventory counts</li>
+                        <li>Field sales orders</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🌐 Multi-Company Management</h4>
+                    <p>Mengelola multiple companies dalam satu instance dengan consolidated reporting.</p>
+                    <ul>
+                        <li>Inter-company transactions</li>
+                        <li>Consolidated reporting</li>
+                        <li>Shared resources</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 Third-Party Integrations</h4>
+                    <p>Integrasi dengan sistem eksternal seperti e-commerce, logistics, dan payment gateways.</p>
+                    <ul>
+                        <li>E-commerce platforms</li>
+                        <li>Shipping carriers</li>
+                        <li>Payment processors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div class="step-by-step">
-          <span class="step-number">2</span>
-          <strong>Phase 2: Process Configuration (Minggu 3-4)</strong>
-          <ul class="features-list">
-              <li>Setup sales workflow dan approval process</li>
-              <li>Configure purchase workflow dan vendor management</li>
-              <li>Create Bill of Materials (BOM) untuk manufacturing</li>
-              <li>Configure inventory rules dan reordering</li>
-          </ul>
-      </div>
+        <!-- Security & Compliance Section -->
+        <div class="module-section">
+            <h2>🔒 Security & Compliance</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🛡️ Data Security</h4>
+                    <ul>
+                        <li>Role-based access control</li>
+                        <li>Data encryption</li>
+                        <li>Regular security updates</li>
+                        <li>Backup & recovery procedures</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Compliance Standards</h4>
+                    <ul>
+                        <li>ISO 9001 quality management</li>
+                        <li>GDPR data protection</li>
+                        <li>SOX financial compliance</li>
+                        <li>Industry-specific regulations</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Audit Trail</h4>
+                    <ul>
+                        <li>Complete transaction history</li>
+                        <li>User activity logging</li>
+                        <li>Change tracking</li>
+                        <li>Compliance reporting</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🔐 Access Management</h4>
+                    <ul>
+                        <li>Multi-factor authentication</li>
+                        <li>Session management</li>
+                        <li>IP restrictions</li>
+                        <li>Regular access reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div class="step-by-step">
-          <span class="step-number">3</span>
-          <strong>Phase 3: Integration Testing (Minggu 5-6)</strong>
-          <ul class="features-list">
-              <li>Test end-to-end process flow</li>
-              <li>Validate data integration accuracy</li>
-              <li>Configure reporting dan analytics</li>
-              <li>User acceptance testing</li>
-          </ul>
-      </div>
+        <!-- Training & Support Section -->
+        <div class="module-section">
+            <h2>🎓 Training & Support Resources</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📚 Documentation</h4>
+                    <ul>
+                        <li>Official Odoo documentation</li>
+                        <li>User manuals per module</li>
+                        <li>Video tutorials</li>
+                        <li>Best practices guides</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>👨‍🏫 Training Programs</h4>
+                    <ul>
+                        <li>End-user training</li>
+                        <li>Administrator certification</li>
+                        <li>Developer courses</li>
+                        <li>Custom training sessions</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🤝 Community Support</h4>
+                    <ul>
+                        <li>Odoo community forum</li>
+                        <li>GitHub repositories</li>
+                        <li>Local user groups</li>
+                        <li>Partner network</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📞 Professional Support</h4>
+                    <ul>
+                        <li>24/7 technical support</li>
+                        <li>Implementation services</li>
+                        <li>Customization support</li>
+                        <li>Maintenance services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div class="step-by-step">
-          <span class="step-number">4</span>
-          <strong>Phase 4: Go-Live & Optimization (Minggu 7-8)</strong>
-          <ul class="features-list">
-              <li>Deploy ke production environment</li>
-              <li>User training dan support</li>
-              <li>Monitor performance dan troubleshooting</li>
-              <li>Continuous improvement</li>
-          </ul>
-      </div>
+        <!-- ROI Calculator Section -->
+        <div class="benefits-section">
+            <h2>💰 Return on Investment (ROI)</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>💵 Cost Savings</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Reduced inventory carrying costs</li>
+                        <li>Lower operational expenses</li>
+                        <li>Decreased manual labor</li>
+                        <li>Minimized stockouts & overstock</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>📈 Revenue Growth</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Faster order processing</li>
+                        <li>Improved customer satisfaction</li>
+                        <li>Better demand forecasting</li>
+                        <li>Increased sales efficiency</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>⚡ Efficiency Gains</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Automated workflows</li>
+                        <li>Real-time reporting</li>
+                        <li>Reduced errors</li>
+                        <li>Streamlined processes</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h4>🎯 Typical ROI Timeline</h4>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Month 1-3: Implementation</li>
+                        <li>Month 4-6: Process optimization</li>
+                        <li>Month 7-12: Full benefits realization</li>
+                        <li>Year 2+: Continuous improvement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <h3>🎯 Best Practices</h3>
-      
-      <div class="modules-grid">
-          <div class="module-card">
-              <div class="module-icon">📊</div>
-              <div class="module-title">Data Quality</div>
-              <ul class="features-list">
-                  <li>Consistent naming conventions</li>
-                  <li>Regular data validation</li>
-                  <li>Master data governance</li>
-                  <li>Data backup strategy</li>
-              </ul>
-          </div>
+        <!-- Future Roadmap Section -->
+        <div class="module-section">
+            <h2>🚀 Future Roadmap & Trends</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🤖 Artificial Intelligence</h4>
+                    <p>AI integration untuk predictive analytics, demand forecasting, dan automated decision making.</p>
+                    <ul>
+                        <li>Predictive maintenance</li>
+                        <li>Intelligent routing</li>
+                        <li>Automated procurement</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🌐 IoT Integration</h4>
+                    <p>Internet of Things untuk real-time monitoring dan automated data collection.</p>
+                    <ul>
+                        <li>Smart warehouse sensors</li>
+                        <li>RFID tracking</li>
+                        <li>Temperature monitoring</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 Blockchain</h4>
+                    <p>Blockchain technology untuk supply chain transparency dan traceability.</p>
+                    <ul>
+                        <li>Product authenticity</li>
+                        <li>Supply chain transparency</li>
+                        <li>Smart contracts</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>☁️ Cloud Evolution</h4>
+                    <p>Enhanced cloud capabilities dengan better scalability dan performance.</p>
+                    <ul>
+                        <li>Multi-cloud deployment</li>
+                        <li>Edge computing</li>
+                        <li>Enhanced security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-          <div class="module-card">
-              <div class="module-icon">👥</div>
-              <div class="module-title">User Management</div>
-              <ul class="features-list">
-                  <li>Role-based access control</li>
-                  <li>Regular user training</li>
-                  <li>Process documentation</li>
-                  <li>Change management</li>
-              </ul>
-          </div>
+        <!-- Conclusion Section -->
+        <div class="module-section">
+            <h2>🎯 Kesimpulan</h2>
+            
+            <div class="feature-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <h3 style="color: white; margin-bottom: 15px;">Mengapa Odoo SCM adalah Pilihan Terbaik?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <h4>✅ Comprehensive Solution</h4>
+                        <p>Satu platform untuk semua kebutuhan SCM dari sales hingga delivery</p>
+                    </div>
+                    <div>
+                        <h4>💰 Cost Effective</h4>
+                        <p>Open source dengan biaya implementasi yang reasonable</p>
+                    </div>
+                    <div>
+                        <h4>🔄 Scalable</h4>
+                        <p>Dapat berkembang seiring pertumbuhan bisnis</p>
+                    </div>
+                    <div>
+                        <h4>🌐 Modern Technology</h4>
+                        <p>Built dengan teknologi terkini dan user-friendly interface</p>
+                    </div>
+                </div>
+            </div>
 
-          <div class="module-card">
-              <div class="module-icon">🔧</div>
-              <div class="module-title">System Performance</div>
-              <ul class="features-list">
-                  <li>Regular system monitoring</li>
-                  <li>Performance optimization</li>
-                  <li>Scalability planning</li>
-                  <li>Security updates</li>
-              </ul>
-          </div>
+            <div class="step-list">
+                <h3>Key Takeaways:</h3>
+                <ol>
+                    <li><strong>Integration is Key:</strong> Kekuatan Odoo terletak pada integrasi seamless antar modul</li>
+                    <li><strong>Real-time Visibility:</strong> Memberikan visibility penuh across supply chain</li>
+                    <li><strong>Process Automation:</strong> Mengurangi manual work dan human errors</li>
+                    <li><strong>Data-Driven Decisions:</strong> Menyediakan analytics untuk better decision making</li>
+                    <li><strong>Continuous Improvement:</strong> Platform yang terus berkembang dengan fitur-fitur baru</li>
+                </ol>
+            </div>
+        </div>
 
-          <div class="module-card">
-              <div class="module-icon">📈</div>
-              <div class="module-title">Continuous Improvement</div>
-              <ul class="features-list">
-                  <li>KPI monitoring</li>
-                  <li>Process optimization</li>
-                  <li>User feedback integration</li>
-                  <li>Technology updates</li>
-              </ul>
-          </div>
-      </div>
+        <!-- Appendix Section -->
+        <div class="module-section">
+            <h2>📎 Appendix</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📖 Glossary</h4>
+                    <ul>
+                        <li><strong>BOM:</strong> Bill of Materials</li>
+                        <li><strong>MRP:</strong> Material Requirement Planning</li>
+                        <li><strong>RFQ:</strong> Request for Quotation</li>
+                        <li><strong>PO:</strong> Purchase Order</li>
+                        <li><strong>SO:</strong> Sales Order</li>
+                        <li><strong>WO:</strong> Work Order</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 Useful Links</h4>
+                    <ul>
+                        <li><a href="https://www.odoo.com/documentation" style="color: #714B67;">Official Documentation</a></li>
+                        <li><a href="https://www.odoo.com/forum" style="color: #714B67;">Community Forum</a></li>
+                        <li><a href="https://apps.odoo.com" style="color: #714B67;">Odoo Apps Store</a></li>
+                        <li><a href="https://www.odoo.com/slides" style="color: #714B67;">eLearning Platform</a></li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📧 Contact Information</h4>
+                    <ul>
+                        <li><strong>Support:</strong> support@odoo.com</li>
+                        <li><strong>Sales:</strong> sales@odoo.com</li>
+                        <li><strong>Training:</strong> training@odoo.com</li>
+                        <li><strong>Partners:</strong> partners@odoo.com</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Checklist Implementation</h4>
+                    <ul>
+                        <li>☐ System requirements check</li>
+                        <li>☐ User training completion</li>
+                        <li>☐ Data migration validation</li>
+                        <li>☐ Workflow testing</li>
+                        <li>☐ Go-live preparation</li>
+                        <li>☐ Post-implementation review</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div class="success-box">
-          <strong>✅ Critical Success Factors:</strong>
-          <ul style="margin-top: 10px; padding-left: 20px;">
-              <li><strong>Executive Support:</strong> Commitment dari management level</li>
-              <li><strong>Change Management:</strong> Proper user adoption strategy</li>
-              <li><strong>Data Migration:</strong> Accurate data transfer dari sistem lama</li>
-              <li><strong>Training:</strong> Comprehensive user training program</li>
-              <li><strong>Support:</strong> Ongoing technical support dan maintenance</li>
-          </ul>
-      </div>
-  </div>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="odoo-logo" style="margin-bottom: 20px;">ODOO</div>
+            <h3>Guide Book Odoo SCM</h3>
+                        <p style="margin: 20px 0;">Panduan Lengkap Supply Chain Management dengan Odoo</p>
+            
+            <div class="team-info">
+                <h4>📚 Informasi Tugas</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div>
+                        <strong>Mata Kuliah:</strong><br>
+                        Manajemen Rantai Pasok
+                    </div>
+                    <div>
+                        <strong>Program Studi:</strong><br>
+                        Sistem Informasi
+                    </div>
+                    <div>
+                        <strong>Semester:</strong><br>
+                        4 (Empat)
+                    </div>
+                    <div>
+                        <strong>Dosen Pengampu:</strong><br>
+                        Bu Erba
+                    </div>
+                </div>
+            </div>
 
-  <!-- Troubleshooting -->
-  <div class="content-section" id="troubleshooting">
-      <h2 class="section-title">🔧 Troubleshooting</h2>
-      
-      <h3>⚠️ Common Issues & Solutions</h3>
-      
-      <div class="warning-box">
-          <strong>🚨 Issue #1: Negative Stock</strong>
-          <p><strong>Symptoms:</strong> Stock qty menunjukkan nilai negatif</p>
-          <p><strong>Causes:</strong> Delivery order dilakukan sebelum stock receipt</p>
-          <p><strong>Solutions:</strong></p>
-          <ul>
-              <li>Check inventory valuation method</li>
-              <li>Verify stock move sequences</li>
-              <li>Adjust inventory dengan physical count</li>
-              <li>Configure negative stock settings</li>
-          </ul>
-      </div>
-
-      <div class="warning-box">
-          <strong>🚨 Issue #2: Purchase Order Tidak Bisa Dikonfirmasi</strong>
-          <p><strong>Symptoms:</strong> Button "Confirm Order" tidak aktif</p>
-          <p><strong>Causes:</strong> Missing product configuration atau user permissions</p>
-          <p><strong>Solutions:</strong></p>
-          <ul>
-              <li>Check user access rights untuk purchase</li>
-              <li>Verify product configuration (route, type)</li>
-              <li>Ensure vendor information lengkap</li>
-              <li>Check purchase workflow settings</li>
-          </ul>
-      </div>
-
-      <div class="warning-box">
-          <strong>🚨 Issue #3: Manufacturing Order Error</strong>
-          <p><strong>Symptoms:</strong> Tidak bisa start production</p>
-          <p><strong>Causes:</strong> Insufficient raw materials atau BOM issues</p>
-          <p><strong>Solutions:</strong></p>
-          <ul>
-              <li>Check raw material availability</li>
-              <li>Verify BOM structure dan quantities</li>
-              <li>Run MRP untuk identify shortages</li>
-              <li>Check work center capacity</li>
-          </ul>
-      </div>
-
-      <div class="warning-box">
-          <strong>🚨 Issue #4: Sales Order Tidak Generate Delivery</strong>
-          <p><strong>Symptoms:</strong> Confirmed sales order tidak create delivery order</p>
-          <p><strong>Causes:</strong> Product route configuration atau stock availability</p>
-          <p><strong>Solutions:</strong></p>
-          <ul>
-              <li>Check product routes (MTO/MTS)</li>
-              <li>Verify warehouse configuration</li>
-              <li>Check stock availability</li>
-              <li>Review delivery order creation rules</li>
-          </ul>
-      </div>
-
-      <h3>🛠️ Troubleshooting Tools</h3>
-      
-      <div class="code-block">
-
-
-Useful Menu Locations for Troubleshooting:
-
-Settings → Technical → Database Structure → Models
-Settings → Technical → Sequences & Identifiers
-Settings → Technical → Actions → Server Actions
-Inventory → Reporting → Stock Moves
-Settings → Technical → Scheduled Actions
-</div>
-     <h3>🔍 Debugging Steps</h3>
-     
-     <div class="step-by-step">
-         <span class="step-number">1</span>
-         <strong>Identify the Problem</strong>
-         <p>Collect error messages, screenshots, dan reproduction steps</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">2</span>
-         <strong>Check Configuration</strong>
-         <p>Verify module settings, user permissions, dan data integrity</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">3</span>
-         <strong>Analyze Logs</strong>
-         <p>Review system logs untuk error details dan root cause</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">4</span>
-         <strong>Test Solution</strong>
-         <p>Implement fix di test environment sebelum production</p>
-     </div>
- </div>
-
- <!-- Kesimpulan -->
- <div class="content-section" id="kesimpulan">
-     <h2 class="section-title">🎯 Kesimpulan</h2>
-     
-     <div class="success-box">
-         <strong>🏆 Key Takeaways:</strong> Implementasi Odoo SCM dengan 4 modul wajib (Sales, Purchase, Manufacturing, Inventory) memberikan foundation yang solid untuk digital transformation supply chain management.
-     </div>
-
-     <h3>📊 Manfaat Implementasi</h3>
-     
-     <div class="modules-grid">
-         <div class="module-card">
-             <div class="module-icon">📈</div>
-             <div class="module-title">Operational Excellence</div>
-             <ul class="features-list">
-                 <li>Process automation</li>
-                 <li>Reduced manual errors</li>
-                 <li>Improved efficiency</li>
-                 <li>Faster response time</li>
-             </ul>
-         </div>
-
-         <div class="module-card">
-             <div class="module-icon">👁️</div>
-             <div class="module-title">Enhanced Visibility</div>
-             <ul class="features-list">
-                 <li>Real-time monitoring</li>
-                 <li>End-to-end traceability</li>
-                 <li>Better decision making</li>
-                 <li>Proactive issue resolution</li>
-             </ul>
-         </div>
-
-         <div class="module-card">
-             <div class="module-icon">💰</div>
-             <div class="module-title">Cost Optimization</div>
-             <ul class="features-list">
-                 <li>Inventory cost reduction</li>
-                 <li>Better procurement</li>
-                 <li>Waste minimization</li>
-                 <li>Resource optimization</li>
-             </ul>
-         </div>
-
-         <div class="module-card">
-             <div class="module-icon">🤝</div>
-             <div class="module-title">Better Collaboration</div>
-             <ul class="features-list">
-                 <li>Integrated workflow</li>
-                 <li>Shared information</li>
-                 <li>Cross-functional teams</li>
-                 <li>Supplier partnership</li>
-             </ul>
-         </div>
-     </div>
-
-     <h3>🚀 Rekomendasi Next Steps</h3>
-     
-     <div class="step-by-step">
-         <span class="step-number">1</span>
-         <strong>Pilot Implementation</strong>
-         <p>Mulai dengan satu product line atau business unit sebagai pilot project</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">2</span>
-         <strong>Gradual Rollout</strong>
-         <p>Expand implementasi secara bertahap ke seluruh organization</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">3</span>
-         <strong>Advanced Features</strong>
-         <p>Explore advanced modules seperti Quality, Maintenance, PLM</p>
-     </div>
-
-     <div class="step-by-step">
-         <span class="step-number">4</span>
-         <strong>Integration</strong>
-         <p>Integrate dengan sistem external (EDI, e-commerce, IoT)</p>
-     </div>
-
-     <div class="integration-diagram">
-         <h3>🔮 Future Vision</h3>
-         <p>"Odoo SCM sebagai foundation untuk Industry 4.0 - Smart Manufacturing, IoT Integration, AI-powered Analytics, dan Predictive Maintenance"</p>
-     </div>
-
-     <div class="warning-box">
-         <strong>⚡ Key Success Metrics:</strong>
-         <ul style="margin-top: 10px; padding-left: 20px;">
-             <li><strong>Inventory Turnover:</strong> Target peningkatan 20-30%</li>
-             <li><strong>Order Fulfillment:</strong> Target 95% on-time delivery</li>
-             <li><strong>Cost Reduction:</strong> Target 10-15% operational cost savings</li>
-             <li><strong>Process Efficiency:</strong> Target 25% reduction in process time</li>
-             <li><strong>Customer Satisfaction:</strong> Target 90%+ customer satisfaction</li>
-         </ul>
-     </div>
- </div>
-
- <!-- Navigation -->
- <div class="nav-buttons">
-     <button class="nav-button" onclick="window.print()">🖨️ Print Guide</button>
-     <button class="nav-button" onclick="window.scrollTo(0,0)">⬆️ Back to Top</button>
- </div>
-
- <!-- Footer -->
- <div class="footer">
-     <h3>📝 Informasi Tugas</h3>
-     <p><strong>Mata Kuliah:</strong> Manajemen Rantai Pasok</p>
-     <p><strong>Program Studi:</strong> Sistem Informasi - Semester 4</p>
-     <p><strong>Tugas:</strong> Guide Book Odoo SCM - 4 Modul Wajib</p>
-     <p><strong>Format:</strong> Kelompok 2 Orang</p>
-     <p><strong>Fokus:</strong> Sales, Purchase, Manufacturing, Inventory</p>
-     
-     <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ecf0f1;">
-         <p style="font-style: italic; color: #7f8c8d;">
-             "Supply Chain Management is not just about moving products, 
-             it's about creating value for customers and stakeholders through 
-             efficient and effective operations."
-         </p>
-     </div>
- </div>
- </div>
- <script>
-     // Smooth scrolling for navigation
-     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-             e.preventDefault();
-             document.querySelector(this.getAttribute('href')).scrollIntoView({
-                 behavior: 'smooth'
-             });
-         });
-     });
-
-     // Interactive module cards
-     document.querySelectorAll('.module-card').forEach(card => {
-         card.addEventListener('click', function() {
-             const title = this.querySelector('.module-title').textContent;
-             const moduleId = title.toLowerCase().replace(' ', '');
-             const section = document.getElementById(moduleId);
-             if (section) {
-                 section.scrollIntoView({ behavior: 'smooth' });
-             }
-         });
-     });
-
-     // Progress indicator
-     window.addEventListener('scroll', function() {
-         const scrollTop = window.pageYOffset;
-         const docHeight = document.body.offsetHeight;
-         const winHeight = window.innerHeight;
-         const scrollPercent = scrollTop / (docHeight - winHeight);
-         const scrollPercentRounded = Math.round(scrollPercent * 100);
-         
-         // Update progress if you want to add a progress bar
-         console.log('Scroll progress: ' + scrollPercentRounded + '%');
-     });
- </script>
-
-
-</body>
-</html>
+            <div class="team-info" style="margin-top: 20px;">
+                <h4>👥 Tim Penyusun</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="width: 60px; height: 60px; background: #714B67; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">👨‍🎓</div>
+                        <strong>Mochammad Rizky Juliansyah</strong><br>
+                        <small>NIM: F12.2023.00099</small>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="width: 60px; height: 60px; background: #714B67; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">👩‍🎓</div>
+                        <strong>Christiawan Yosua Hertinando</strong><br>
+                        <small>NIM: F12.2023.00103</small>
+                    </div>
+                </div>
+            </div>
